@@ -5,6 +5,7 @@
 ProjectRoot
     +- README.md
     +- CMakeLists.txt   最顶层CMakeLists.txt, 只包含对整体工程的配置, 不涉及具体模块
+    +- <工程名称>-config.cmake    在这里配置工程包含的具体模块, 该文件会被最顶层CMakeLists.txt 引用
     +- cmake   包含工程自定义的cmake模块和脚本
          +- modules
                +- ClangTidy.cmake

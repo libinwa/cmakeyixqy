@@ -31,6 +31,7 @@ ProjectRoot
     +- source
          +- README.md  简要说明各模块，例如哪些是命令行可执行程序模块，哪些是GUI可执行程序模块，哪些是静态库，动态库, 代码检查使用的哪种linter
          +- CMakeLists.txt 工程下开发的模块列表(add_subdirectory), 还有适用于所有模块的配置
+         +- version.h.in 支持configure_file()方法据其生成工程版本信息(宏定义)头文件
          +- ProjectModule1   工程下开发实现的模块1
               +- CMakeLists.txt 适用于该模块的配置, 可以单独使用cmake根据CMakeLists.txt配置生成模块目标
               +- include

@@ -1,5 +1,5 @@
 
-#include <fiblib/Fibonacci.h>
+#include <Fibonacci.h>
 
 
 namespace fiblib

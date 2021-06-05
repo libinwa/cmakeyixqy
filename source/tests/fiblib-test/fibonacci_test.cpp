@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 
 
-#include <fiblib/Fibonacci.h>
+#include <Fibonacci.h>
 
 class fibonacci_test: public testing::Test
 {

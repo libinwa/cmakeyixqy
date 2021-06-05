@@ -49,10 +49,8 @@ ProjectRoot
               +- CMakeLists.txt 
               +- fibcmd
                   +- CMakeLists.txt 
-                  +- src
               +- fibgui
                   +- CMakeLists.txt 
-                  +- src
          +- ...
          +- ...
          +- ...

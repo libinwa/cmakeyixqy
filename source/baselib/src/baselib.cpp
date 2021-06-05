@@ -2,9 +2,9 @@
 #include <iostream>
 #include <fstream>
 
-#include <template/template-version.h>
+#include <cmakeyixqy-version.h>
 
-#include <baselib/baselib.h>
+#include <baselib.h>
 
 
 namespace baselib
@@ -20,7 +20,7 @@ void printInfo()
     std::cout << "========================================" << std::endl;
 
     // Library version
-    std::cout << "Version: " << TEMPLATE_VERSION << std::endl;
+    std::cout << "Version: " << CMAKEYIXQY_VERSION << std::endl;
     std::cout << std::endl;
 
     // Library type (static or dynamic)

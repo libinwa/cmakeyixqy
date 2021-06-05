@@ -6,8 +6,8 @@
 # Generate version-header
 set(version_file "${CMAKE_CURRENT_SOURCE_DIR}/version.h.in")
 if(EXISTS "${version_file}")
-    set(version_header_file "${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME}/${META_PROJECT_NAME}-version.h")
-    configure_file(version.h.in version_header_file @ONLY)
+    set(version_header_file "${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME}-version.h")
+    configure_file(${version_file} ${version_header_file} @ONLY)
     message(STATUS "Generate ${META_PROJECT_NAME} version-header: ${version_header_file}")
 else()
     message(WARNING "Generate ${META_PROJECT_NAME} version-header: ignored, missing ${version_file}")

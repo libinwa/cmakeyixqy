@@ -83,7 +83,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
             /GF           # -> enable string pooling
             >
             
-            # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
+            # No manual c++11 enable for MSVC as all supported MSVC versions for cmakeyixqy have C++11 implicitly enabled (MSVC >=2013)
 
         PUBLIC
             /wd4251       # -> disable warning: 'identifier': class 'type' needs to have dll-interface to be used by clients of class 'type2'

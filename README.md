@@ -1,5 +1,7 @@
 ## More Mordern CMake Project Template
 
+ *cmakeyixqy* project template upstream repository [cmake-init](https://github.com/cginternals/cmake-init.git) may be updated and you want to integrate the changes, you can update the required modules selectively.
+
 ## 一厢情愿的目录结构
 ```
 ProjectRoot
@@ -76,4 +78,19 @@ ProjectRoot
                  +- CMakeLists.txt 
                  +- src
 
+```
+
+## 替换样例工程名称(cmakeyixqy/CMAKEYIXQY)为特定工程名称
+
+## 构建 
+
+1. 生成目标构建系统待构建工程
+```
+cd build && cmake ..
+```
+2. 使用构建系统构建
+```
+cd build && cmake --build .
+or
+cd build && cmake --build . --config Release
 ```

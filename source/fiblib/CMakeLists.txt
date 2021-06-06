@@ -1,5 +1,63 @@
 
 # 
+# Check decleared project 
+# 
+if(NOT PROJECT_NAME)
+    # CMake version
+    cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+    #
+    # Configure CMake environment
+    #
+
+    # Register general cmake commands
+    include(../../cmake/modules/Custom.cmake)
+
+    # Include default cmake modules
+    include(GenerateExportHeader)
+
+    # Include custom cmake modules
+    include(../../cmake/modules/Coverage.cmake)
+    include(../../cmake/modules/GenerateTemplateExportHeader.cmake)
+    include(../../cmake/modules/GetGitRevisionDescription.cmake)
+    include(../../cmake/modules/HealthCheck.cmake)
+
+    # 
+    # Declare project
+    # 
+    project(fiblib)
+
+    # Set output directories
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+
+    # 
+    # Compiler settings and options
+    # 
+
+    include(../../cmake/modules/CompileOptions.cmake)
+
+    # 
+    # Deployment
+    # 
+    # Install into local directory
+    set(INSTALL_ROOT      ".")                      # ./
+    set(INSTALL_CMAKE     "cmake")                  # ./cmake
+    set(INSTALL_EXAMPLES  ".")                      # ./
+    set(INSTALL_DATA      ".")                      # ./
+    set(INSTALL_BIN       ".")                      # ./
+    set(INSTALL_SHARED    "lib")                    # ./lib
+    set(INSTALL_LIB       "lib")                    # ./lib
+    set(INSTALL_INCLUDE   "include")                # ./include
+    set(INSTALL_DOC       "doc")                    # ./doc
+    set(INSTALL_SHORTCUTS "misc")                   # ./misc
+    set(INSTALL_ICONS     "misc")                   # ./misc
+    set(INSTALL_INIT      "misc")                   # ./misc
+endif()
+
+
+# 
 # External dependencies
 # 
 

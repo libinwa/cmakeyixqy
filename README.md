@@ -1,10 +1,11 @@
 ## More Mordern CMake Project Template
 
- *cmakeyixqy* project template upstream repository [cmake-init](https://github.com/cginternals/cmake-init.git) may be updated and you want to integrate the changes, you can update the required modules selectively.
+ This *cmakeyixqy* project template (fork) upstream repository [cmake-init](https://github.com/cginternals/cmake-init.git) may be updated and you want to integrate the changes, you can update the required modules selectively, *cmake-init* thx.
 
 ## 一厢情愿的目录结构
 ```
 ProjectRoot
+    +- LICENSE
     +- README.md
     +- CMakeLists.txt   最顶层CMakeLists.txt, 只包含对整体工程的配置, 不涉及具体模块
     +- <工程名称>-config.cmake    在这里配置工程包含的具体模块, 该文件会被最顶层CMakeLists.txt 引用
@@ -13,8 +14,8 @@ ProjectRoot
                +- ClangTidy.cmake
                +- CppCheck.cmake
                +- ...
-         +- scripts
-    +- data    编译生成的目标程序运行时所依赖的配置数据
+         +- scripts 实现cmake应用功能的shell脚本
+    +- data    应用程序运行时所依赖的配置数据
     +- deploy
          +- README.md
          +- CMakeLists.txt 使用CPack打包应用该配置
@@ -25,15 +26,15 @@ ProjectRoot
          +- README.md
          +- CMakeLists.txt
          +- api-docs
-             +- CMakeLists.txt
-             +- doxyfile.in
+             +- CMakeLists.txt  配置参数DEPENDS 应该包含了所有 targets
+             +- doxyfile.in    生成接口文档, INPUT tag (list of doxygen annotated sources)
          +- manual
              +- CMakeLists.txt
              +- <工程名称>.tex
     +- source
          +- README.md  简要说明各模块，例如哪些是命令行可执行程序模块，哪些是GUI可执行程序模块，哪些是静态库，动态库, 代码检查使用的哪种linter
          +- CMakeLists.txt 工程下开发的模块列表(add_subdirectory), 还有适用于所有模块的配置
-         +- version.h.in 支持configure_file()方法据其生成工程版本信息(宏定义)头文件
+         +- version.h.in 支持configure_file()方法据其生成工程版本信息(宏定义)头文件 支持编码时候引入 `#include "<project>/<project>-version.h"`
          +- ProjectModule1   工程下开发实现的模块1
               +- CMakeLists.txt 适用于该模块的配置, 可以单独使用cmake根据CMakeLists.txt配置生成模块目标
               +- include
@@ -81,6 +82,8 @@ ProjectRoot
 ```
 
 ## 替换样例工程名称(cmakeyixqy/CMAKEYIXQY)为特定工程名称
+
+  参见 检查表 ADAPT.md
 
 ## 构建 
 

@@ -97,3 +97,10 @@ cd build && cmake --build .
 or
 cd build && cmake --build . --config Release
 ```
+
+## Appendix
+
+1. [cmake-examples](https://github.com/ttroy50/cmake-examples.git)
+2. [modern-cmake-practice](https://github.com/liff-engineer/modern-cmake-practice.git)
+
+

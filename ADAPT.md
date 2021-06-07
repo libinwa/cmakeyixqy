@@ -22,7 +22,7 @@ In subdirectory "./deploy/" do:
 --------------------------------------------------------------------
 
 deploy/CMakeLists.txt:
-* [ ] Rename deploy/packages/pack-template.cmake -> pack-\<project>.cmake
+* [ ] Rename deploy/packages/pack-cmakeyixqy.cmake -> pack-\<project>.cmake
 
 deploy/packages/pack-\<project>.cmake:
 * [ ] Adjust OPTION_PACK_GENERATOR to your liking for all systems

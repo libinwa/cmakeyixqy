@@ -3,6 +3,8 @@
 # External dependencies
 # 
 
+#SET(CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.12.8\\5.12.8\\msvc2017_64\\lib\\cmake")
+
 find_package(Qt5Core    5.1)
 find_package(Qt5Gui     5.1)
 find_package(Qt5Widgets 5.1)

@@ -95,6 +95,8 @@ set_target_properties(${target}
 
 target_include_directories(${target}
     PRIVATE
+    #${PROJECT_SOURCE_DIR}/third-party/boost_1_72_0/include
+    #${PROJECT_SOURCE_DIR}/third-party/spdlog/include
     ${PROJECT_BINARY_DIR}/source/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_BINARY_DIR}/include
@@ -156,7 +158,7 @@ target_compile_options(${target}
 # Linker options
 # 
 
-target_link_libraries(${target}
+target_link_options(${target}
     PRIVATE
 
     PUBLIC

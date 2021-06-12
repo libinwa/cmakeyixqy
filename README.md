@@ -31,6 +31,13 @@ ProjectRoot
          +- manual
              +- CMakeLists.txt
              +- <工程名称>.tex
+    +- third-party    第三方提供的程序库/文件/资料 
+         +- boost_1_72_0
+             +- include 
+             +- lib
+             +- bin 
+         +- spdlog 
+         +- rapidjson
     +- source
          +- README.md  简要说明各模块，例如哪些是命令行可执行程序模块，哪些是GUI可执行程序模块，哪些是静态库，动态库, 代码检查使用的哪种linter
          +- CMakeLists.txt 工程下开发的模块列表(add_subdirectory), 还有适用于所有模块的配置

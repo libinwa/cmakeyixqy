@@ -95,7 +95,7 @@ set_target_properties(${target}
 
 target_include_directories(${target}
     PRIVATE
-    #${PROJECT_SOURCE_DIR}/third-party/boost_1_72_0/include
+    #${PROJECT_SOURCE_DIR}/third-party/rapidjson/include
     #${PROJECT_SOURCE_DIR}/third-party/spdlog/include
     ${PROJECT_BINARY_DIR}/source/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -115,11 +115,58 @@ target_include_directories(${target}
 # Libraries
 # 
 
+# If the downstream target dependents (specify libraries) cannot be found 
+# by find_package()
+#
+# Method add_libraries() & set_property() can add specify libraries
+# manually:
+#
+# https://cmake.org/cmake/help/latest/guide/importing-exporting/index.html
+##
+#if("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
+#
+#    add_library(boost_filesystem STATIC IMPORTED)
+#    set_property(TARGET boost_filesystem PROPERTY 
+#        INTERFACE_INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}/third-party/boost_1_72_0/include)
+#    set_property(TARGET boost_filesystem PROPERTY 
+#        IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/third-party/boost_1_72_0/lib/x86/windows/release/libboost_filesystem-vc142-mt-x64-1_72.lib)
+#    set_property(TARGET boost_filesystem PROPERTY 
+#        IMPORTED_LOCATION_DEBUG ${PROJECT_SOURCE_DIR}/third-party/boost_1_72_0/lib/x86/windows/debug/libboost_filesystem-vc142-mt-gd-x64-1_72.lib)
+#
+#
+#    add_library(ZSTDCompress SHARED IMPORTED)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        INTERFACE_INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}/third-party/zstd/include)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/third-party/zstd/bin/x86/windows/release/ZSTDCompress.dll)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_IMPLIB ${PROJECT_SOURCE_DIR}/third-party/zstd/lib/x86/windows/release/ZSTDCompress.lib)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_LOCATION_DEBUG ${PROJECT_SOURCE_DIR}/third-party/zstd/bin/x86/windows/debug/ZSTDCompressd.dll)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_IMPLIB_DEBUG ${PROJECT_SOURCE_DIR}/third-party/zstd/lib/x86/windows/debug/ZSTDCompressd.lib)
+#else()
+#
+#    add_library(ZSTDCompress SHARED IMPORTED)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        INTERFACE_INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}/third-party/zstd/include)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/third-party/zstd/bin/x86/linux/release/libZSTDCompress.so)
+#    set_property(TARGET ZSTDCompress PROPERTY 
+#        IMPORTED_LOCATION_DEBUG ${PROJECT_SOURCE_DIR}/third-party/zstd/bin/x86/linux/debug/libZSTDCompressd.so)
+#
+#endif()
+
+
+# Set specify libraries or flags to use when linking a given target 
+# and/or its dependents.
 target_link_libraries(${target}
     PRIVATE
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
+#    boost_filesystem 
+#    ZSTDCompress
 
     INTERFACE
 )

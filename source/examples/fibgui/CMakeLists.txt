@@ -3,15 +3,18 @@
 # External dependencies
 # 
 
+# find_package(THIRDPARTY REQUIRED)
+
 #SET(CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.12.8\\5.12.8\\msvc2017_64\\lib\\cmake")
 
-find_package(Qt5Core    5.1)
-find_package(Qt5Gui     5.1)
-find_package(Qt5Widgets 5.1)
+find_package(Qt5Core    5.12)
+find_package(Qt5Gui     5.12)
+find_package(Qt5Widgets 5.12)
 
 # Enable automoc
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
 set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
 
@@ -28,10 +31,10 @@ set(target fibgui)
 
 # Exit here if required dependencies are not met
 if (NOT Qt5Core_FOUND)
-    message(STATUS "Example ${target} skipped: Qt5 not found")
+    message(STATUS "Executable ${target} skipped: Qt5 not found")
     return()
 else()
-    message(STATUS "Example ${target}")
+    message(STATUS "Executable ${target}")
 endif()
 
 
@@ -39,13 +42,28 @@ endif()
 # Sources
 # 
 
+set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+set(headers
+    #${include_path}/MainDialog.h
+    MainWindow.h
+)
+
 set(sources
+    #${source_path}/main.cpp
     main.cpp
     MainWindow.cpp
-    MainWindow.h
     MainWindow.ui
 )
 
+# Group source files
+set(header_group "Header Files (API)")
+set(source_group "Source Files")
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+    ${header_group} ${headers})
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+    ${source_group} ${sources})
 
 # 
 # Create executable
@@ -54,6 +72,7 @@ set(sources
 # Build executable
 add_executable(${target}
     MACOSX_BUNDLE
+    ${headers}
     ${sources}
 )
 
@@ -69,6 +88,7 @@ set_target_properties(${target}
     PROPERTIES
     ${DEFAULT_PROJECT_OPTIONS}
     FOLDER "${IDE_FOLDER}"
+    VERSION ${META_VERSION}
 )
 
 
@@ -79,8 +99,9 @@ set_target_properties(${target}
 target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
-    ${CMAKE_CURRENT_BINARY_DIR}
     ${PROJECT_BINARY_DIR}/source/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
 
@@ -135,6 +156,7 @@ target_link_options(${target}
 
 perform_health_checks(
     ${target}
+    ${headers}
     ${sources}
 )
 

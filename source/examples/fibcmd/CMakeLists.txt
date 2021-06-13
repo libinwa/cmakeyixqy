@@ -21,10 +21,25 @@ message(STATUS "Example ${target}")
 # Sources
 # 
 
+set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+set(headers
+    #${include_path}/Example.h
+)
+
 set(sources
+    #${source_path}/main.cpp
     main.cpp
 )
 
+# Group source files
+set(header_group "Header Files (API)")
+set(source_group "Source Files")
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+    ${header_group} ${headers})
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+    ${source_group} ${sources})
 
 # 
 # Create executable
@@ -33,6 +48,7 @@ set(sources
 # Build executable
 add_executable(${target}
     MACOSX_BUNDLE
+    ${headers}
     ${sources}
 )
 
@@ -48,6 +64,7 @@ set_target_properties(${target}
     PROPERTIES
     ${DEFAULT_PROJECT_OPTIONS}
     FOLDER "${IDE_FOLDER}"
+    VERSION ${META_VERSION}
 )
 
 
@@ -59,6 +76,8 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
 
@@ -110,6 +129,7 @@ target_link_options(${target}
 
 perform_health_checks(
     ${target}
+    ${headers}
     ${sources}
 )
 
